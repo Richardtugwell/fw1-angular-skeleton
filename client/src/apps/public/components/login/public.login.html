@@ -1,0 +1,19 @@
+<h3>Login Form</h3>
+<form ng-submit="vm.submitLogin()">
+    <div class="form-group">
+        <label>
+            Email
+        </label>
+            <input class="form-control" name="email" type="text" ng-model="vm.loginData.email" placeholder="Use Tom, Dick or Harry">
+    </div>
+    <div class="form-group">
+        <label>
+            Password
+        </label>
+            <input  class="form-control"type="password" ng-model="vm.loginData.password" placeholder="Use 'pwd'">
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">Login</button>
+    <hr/>
+    <a class="btn btn-default btn-block" ui-sref="public.register" >Register</button>
+    <a class="btn btn-default btn-block" ui-sref="public.requestpasswordreset" >Forgot Password?</button>
+</form>

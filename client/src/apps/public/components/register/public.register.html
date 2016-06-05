@@ -1,0 +1,38 @@
+<h3>Registration Form</h3>
+<form name="frmRegister" ng-submit="vm.submitRegister()" novalidate>
+    <div class="form-group">
+        <label ng-messages="frmRegister.email.$error" >
+        Email Address<span ng-messages-include="common/templates/common.validationmessages.html"></span>
+        </label>
+        <input class="form-control" type="email" name="email" ng-model="vm.registerData.email" required placeholder="Enter valid email">
+    </div>
+    <div class="form-group">
+        <label ng-messages="frmRegister.firstname.$error" >
+        First Name<span ng-messages-include="common/templates/common.validationmessages.html"></span>
+        </label>
+        <input class="form-control" type="text" name="firstname" required ng-model="vm.registerData.firstname" placeholder="Enter your first name">
+    </div>
+    <div class="form-group">
+        <label ng-messages="frmRegister.lastname.$error" >
+        Last Name<span ng-messages-include="common/templates/common.validationmessages.html"></span>
+        </label>
+        <input class="form-control" type="text" name="lastname" required  ng-model="vm.registerData.lastname" placeholder="Enter you last name">
+    </div>
+    <div class="form-group">
+        <label ng-messages="frmRegister.password.$error" >
+        Password<span ng-messages-include="common/templates/common.validationmessages.html"></span>
+        </label>
+        <input class="form-control" type="password" name="password" required  ng-model="vm.registerData.password" placeholder="Enter a password">
+    </div>
+    <div class="form-group">
+        <label ng-messages="frmRegister.passwordconfirm.$error" >
+        Confirm Password<span ng-messages-include="common/templates/common.validationmessages.html"></span>
+        </label>
+        <input class="form-control" type="password" name="passwordconfirm" required  ng-model="vm.registerData.confirmpassword" fm-compare-to="vm.registerData.password" placeholder="Re-Enter a password">
+    </div>
+
+    <button class="btn btn-primary btn-block" ng-disabled="!frmRegister.$valid" type="submit">Register</button>
+    <hr/>
+    <a class="btn btn-default btn-block" ui-sref="public.login" >Login</button>
+    <a class="btn btn-default btn-block" ui-sref="public.requestpasswordreset" >Forgot Password?</button>
+</form>

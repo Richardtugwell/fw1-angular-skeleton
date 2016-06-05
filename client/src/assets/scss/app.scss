@@ -1,0 +1,19 @@
+@import "bootstrap-custom";
+@import "toaster.scss";
+body {
+    margin-top:70px;
+}
+
+
+// Toaster customisations
+#toast-container > div {
+    opacity: 1;
+}
+
+:not(.no-enter)#toast-container > div.ng-enter,
+:not(.no-leave)#toast-container > div.ng-leave
+{
+    transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+// injector
+// endinjector

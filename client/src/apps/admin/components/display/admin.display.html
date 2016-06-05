@@ -1,0 +1,47 @@
+<section>
+<div class="row">
+	<div class="col-xs-3 col-sm-7 col-md-7 col-lg-6 text-riht">
+	    <a href="<cfoutput>#buildURL(action='admin.vote' , querystring={'ID':createUUID()})#</cfoutput>" type="button" class="btn btn-default">
+	      New Vote
+	    </a>
+	</div>
+</div>
+<br>
+</section>
+<!-- widget grid -->
+<section class="" id="widget-grid">
+
+	<!-- row -->
+	<div class="row">
+
+		<cfloop array="#rc.votes#" index="vote">
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-2" data-widget-togglebutton="true" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> dd</span>
+					<h2><cfoutput>#vote.name#</cfoutput></h2>
+					<div class="widget-toolbar">
+
+						<a class="btn button btn-default" href="/index.cfm/admin/deletevote/ID/<cfoutput>#vote.IDvote#</cfoutput>/"ng-confirm-click="Delete this vote?"><i class="fa fa-trash-o"></i> <cfoutput>#rb.get('delete')#</cfoutput></a>
+						<a class="btn button btn-default" href="/index.cfm/admin/vote/ID/<cfoutput>#vote.IDvote#</cfoutput>/"><i class="fa fa-pencil"></i> <cfoutput>#rb.get('edit')#</cfoutput></a>
+						<a class="btn button btn-default" href="/index.cfm/admin/report/ID/<cfoutput>#vote.IDvote#</cfoutput>/"><i class="fa fa-bar-chart-o"></i> <cfoutput>#rb.get('reports')#</cfoutput></a>
+
+					</div>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+
+				</div>
+			</div>
+
+		</article>
+		</cfloop>
+
+	</div>
+
+</section>
