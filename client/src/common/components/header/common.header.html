@@ -21,7 +21,7 @@
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                         <li ng-repeat="item in vm.account.menu">
-                            <a href="{{item.link}}" ng-click="vm.isCollapsed='true'">{{item.name}}</a>
+                            <a href="{{item.link}}" ng-click="!vm.isCollapsed ? vm.isCollapsed='true' : ''">{{item.name}}</a>
                         </li>
                     </ul>
                 </li>
