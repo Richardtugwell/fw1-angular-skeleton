@@ -9,14 +9,7 @@
     $stateProvider
         .state('root', {
             abstract: true,
-            templateUrl: 'admin/admin.html',
-            resolve: {
-                currentAccount: ['common.accountService' , function( accountService) {
-                    return accountService.getAccount()
-                }]
-            },
-            controller: 'PageController',
-            controllerAs: 'page'
+            templateUrl: 'admin/admin.html'
         })
         .state('admin', {
             url:'/',
@@ -24,25 +17,6 @@
             views: {
                 'header': {
                     template: '<fm-common-header />'
-                },
-                'content': {
-                    template: '<fm-admin-display data="vm.data" />'
-                }
-            }
-        })
-        .state('admin.votes', {
-            url:'votes',
-            views: {
-                'content@root': {
-                    template: 'Votes stuff goes here'
-                }
-            }
-        })
-        .state('admin.accounts', {
-            url:'accounts',
-            views: {
-                'content@root': {
-                    template: 'Accounts stuff goes here'
                 }
             }
         })

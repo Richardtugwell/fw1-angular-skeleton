@@ -7,7 +7,6 @@ component accessors="true" {
 		// just hard code a menu structure for now
 		var menuitems =
 			[
-				{'name':'Admin' , 'link':  'admin'},
 				{'name':'User' , 'link':  'user'}
 			];
 
