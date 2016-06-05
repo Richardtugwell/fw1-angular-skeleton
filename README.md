@@ -40,7 +40,7 @@ Requests for `/<section>` return a simple Angular root template and the appropri
 
 Pure api endpoints are configured as `/api/<section>/<item>`. The controllers that orchestrate this sit in `/server/application/fw1/subsystem/api/controllers/<section>.cfc`
 
-##Everything After Here is WIP!
+##Everything After Here is WIP - I'll get it completed soon!
 
 ```
 ├── README.md
@@ -63,6 +63,8 @@ FW1 is a framework developed by Sean Corfield
 This began as a fork of Mike Sprague's [lucee-heroku-template](https://github.com/writecodedrinkcoffee/lucee-heroku-template) project.
 
 This project uses the [cfmlprojects.org](http://cfmlprojects.org/artifacts/org/lucee/) Maven repo maintained by [Denny Valliant](https://github.com/denuno). Many thanks to Denny for his work maintaining cfmlprojects.org.
+
+**More credits to be added here!!**
 
 
 ###Lucee info
