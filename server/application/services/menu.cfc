@@ -13,7 +13,7 @@ component accessors="true" {
 
 		var accountmenuitems = [];
 
-		// if role is authorised for the function, add the menu item
+		// if role is authorised for the resource, add the menu item
 		for (var item in menuitems ) {
 			var resource = listFirst( item.link , '/');
         	if (authorisationservice.authorise( arguments.role, resource ).authorised ) {

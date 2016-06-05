@@ -1,6 +1,6 @@
 ##FW1 / Angular Skeleton
 
-This is a protoype for building websites / webapps that integrate the FW/1 MVC framework with a modular AngularJS front end. It includes basic server side authentication and an authorisation scheme.
+This is a protoype for building websites / webapps that integrate the FW/1 MVC framework with a modular AngularJS front end. It includes server side account/user management, authentication and an simple resource authorisation scheme.
 
 ###Requirements
 * [Node](https://nodejs.org/en/) 
@@ -9,6 +9,9 @@ This is a protoype for building websites / webapps that integrate the FW/1 MVC f
 * [Maven](http://maven.apache.org/) to build the Lucee servlet
 * [Foreman](https://github.com/ddollar/foreman) to run locally
 
+An SMTP server is required for email functionality. This defaults to 127.0.0.1 - set in `/server/application/services/email`
+
+On OSX you can just `sudo postfix start` (probably). On Windows I guess IIS will do the job. This would be adequate for development / POC.
 
 ###Quick start
 
