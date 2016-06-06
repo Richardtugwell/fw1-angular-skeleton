@@ -36,7 +36,7 @@
             // Caches the account promise so we only need one xhr call
                 accountPromise = publicAPI.get( 'getaccount')
                     .then(function (data) {
-                        return data.plain();
+                        return data;
                     });
             }
             return accountPromise;

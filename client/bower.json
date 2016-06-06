@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "bootstrap-sass": "~3.3.6",
-    "angular": "~1.5.4",
+    "angular": "~1.5.6",
     "angular-animate": "~1.5.3",
     "angular-ui-router": "~0.2.18",
     "fastclick": "~1.0.6",
@@ -34,9 +34,6 @@
     "angular-mocks": "~1.5.6",
     "message-center": "~1.2.6",
     "angular-messages": "~1.5.6"
-  },
-  "resolutions": {
-    "angular": "1.5.6"
   },
   "devDependencies": {}
 }
