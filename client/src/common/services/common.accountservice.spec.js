@@ -21,8 +21,8 @@ describe('Common Account Service', function () {
 
     describe('Account functions', function () {
         beforeEach( function() {
-            httpBackend.expect('GET', '/api/public/getaccount')
-              .respond(200, accountMock );            
+            httpBackend.whenGET('/api/public/getaccount')
+              .respond( accountMock );
         })
         it('Get Account should return a promise.', function (done) {
             //Yeah, well this doesn't really prove much, does it? Ha ha ha.
