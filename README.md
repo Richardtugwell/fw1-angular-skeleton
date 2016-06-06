@@ -37,6 +37,13 @@ Start hacking modifying as required.
 By default, access to the Lucee server/web admins has remote access blocked. This can be
 configured in /webroot/WEB-INF/urlrewrite.xml
 
+####Other
+```bash
+(from the /client directory)
+
+$ gulp --production (to minify code)
+$ gulp test (to run test suites - when they're written ;-)
+```
 ###Architecture
 
 Requests for `/<section>` return a simple Angular root template and the appropriate JS and CSS assets for application `section`. The code sits in `/client/src/apps/<section>`. The build system produces files `app.<section>.js` and `app.<section>.css`. In essence, each `/<section>` is an Angular SPA. The server side controllers that wire this together are in `/server/application/fw1/controllers/<section>.cfc`
