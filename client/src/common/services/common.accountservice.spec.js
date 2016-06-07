@@ -3,8 +3,8 @@
 describe('Common Account Service', function () {
 
     var accountService;
-    var account;
-    var accountMock = "success"
+    var result;
+    var resultMock = "success"
     var Q;
     var rootScope;
     var httpBackend;
@@ -19,35 +19,67 @@ describe('Common Account Service', function () {
         Q = $q;
     }]));
 
-    describe('Account functions', function () {
+    describe('Get/Set Account', function () {
         beforeEach( function() {
             httpBackend.whenGET('/api/public/getaccount')
-              .respond( accountMock );
+              .respond( resultMock );
         })
-        it('Get Account should return a promise.', function (done) {
+        it('Get Account should call API return a promise.', function (done) {
             //Yeah, well this doesn't really prove much, does it? Ha ha ha.
-            accountService.getAccount().then(
-                function(data) {
-                    account = data;
-                }
-            );
+            accountService.getAccount().then(function(data) {result = data;});
             httpBackend.flush();
             rootScope.$digest();
-            expect( account ).toEqual( accountMock ) ;
+            expect( result ).toEqual( resultMock ) ;
             done();
         });
-        it('Set Account should return a promise.', function (done) {
+        it('Set Account should call API return a promise.', function (done) {
 
-            accountService.setAccount().then(
-                function(data) {
-                    account = data;
-                }
-            );
+            accountService.setAccount().then(function(data) {result = data;});
             httpBackend.flush();
             rootScope.$digest();
-            expect( account ).toEqual( accountMock ) ;
+            expect( result ).toEqual( resultMock ) ;
             done();
         });
 
     })
+    describe('Login Account', function () {
+        it('should call API and return a promise.', function (done) {
+            httpBackend.whenPOST('/api/public/authenticate').respond( resultMock );
+            accountService.loginAccount().then(function(data) {result = data;});
+            httpBackend.flush();
+            rootScope.$digest();
+            expect( result ).toEqual( resultMock ) ;
+            done();
+        });
+    });
+    describe('Confirm Email', function () {
+        it('should call API and return a promise.', function (done) {
+            httpBackend.whenPOST('/api/public/confirmemail').respond( resultMock );
+            accountService.confirmEmail().then(function(data) {result = data;});
+            httpBackend.flush();
+            rootScope.$digest();
+            expect( result ).toEqual( resultMock ) ;
+            done();
+        });
+    });
+    describe('Request Password Reset', function () {
+        it('should call API and return a promise.', function (done) {
+            httpBackend.whenPOST('/api/public/requestpasswordreset').respond( resultMock );
+            accountService.requestPasswordReset().then(function(data) {result = data;});
+            httpBackend.flush();
+            rootScope.$digest();
+            expect( result ).toEqual( resultMock ) ;
+            done();
+        });
+    });
+    describe('Reset Password', function () {
+        it('should call API and return a promise.', function (done) {
+            httpBackend.whenPOST('/api/public/resetpassword').respond( resultMock );
+            accountService.resetPassword().then(function(data) {result = data;});
+            httpBackend.flush();
+            rootScope.$digest();
+            expect( result ).toEqual( resultMock ) ;
+            done();
+        });
+    });
 });
