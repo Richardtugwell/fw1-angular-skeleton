@@ -4,7 +4,6 @@ component accessors = true {
 	property menuservice;
 	property accountservice;
 	property sessionservice;
-	property passwordservice;
 
 	public void function getaccount() {
 

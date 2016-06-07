@@ -1,9 +1,5 @@
 component accessors = true	{
 
-	property config;
-	property emailservice;
-	property sessionservice;
-
     public struct function hashPasswordPBKDF2 (required string password, numeric iterations = 100000, numeric saltByteLength = 8) {
         if (iterations < 100000) {
             throw(message="Iterations must be greater than or equal to 100000");

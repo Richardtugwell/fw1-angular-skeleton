@@ -3,7 +3,7 @@ component accessors = true	{
 	property config;
 	property emailservice;
 	property sessionservice;
-	property passwordservice;
+	property pbkdf2service;
 
 public any function checkEmail( email ) {
 
@@ -91,7 +91,7 @@ public any function register( data  ) {
 	account.setfirstname( data.firstname );
 	account.setlastname( data.lastname );
 	account.setidaccount( data.IDaccount );
-	account.setpassword( passwordservice.hashpassword( password = data.password ) );
+	account.setpassword( pbkdf2service.hashpassword( password = data.password ) );
 	account.setvalidemail(  data.token  );
 	account.setpasswordreset(  createUUID() );
 	account.setemail( data.email ) ;
@@ -117,7 +117,7 @@ public any function register( data  ) {
 		ret["result"] = false;
 		ret["message"] = "Invalid Login Credentials";
 		var account = entityLoad('account', {email = email} , "true");
-		if ( !isNull(account) AND passwordservice.checkpassword(attemptedPassword = trim( password ) , storedPassword = account.getPassword() ) ) {
+		if ( !isNull(account) AND pbkdf2service.checkpassword(attemptedPassword = trim( password ) , storedPassword = account.getPassword() ) ) {
 
 			if ( account.getIsValid() ) {
 
@@ -188,7 +188,7 @@ public any function resetPassword( data  ) {
 	var acc = entityload("account" , {passwordReset = passwordreset} , "true");
 
 	if ( !isNull(acc)) {
-		acc.setpassword( passwordservice.hashpassword( password = data.password ) );
+		acc.setpassword( pbkdf2service.hashpassword( password = data.password ) );
 		acc.setPasswordReset( createUUID() );
 		entitySave(acc);
 		ormFlush();
