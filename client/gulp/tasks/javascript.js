@@ -47,6 +47,7 @@ module.exports = function(config) {
                 console.log(e);
             }));
         return gulp.src([ // Concatenate app js in correct order
+                '!src/apps/**/*.spec.js',
                 path.join(config.SOURCE.apps, folder, folder + '.module.js'),
                 path.join(config.SOURCE.apps, folder, folder + '.constants.js'),
                 path.join(config.SOURCE.apps, folder, folder + '.pagecontroller.js'),
