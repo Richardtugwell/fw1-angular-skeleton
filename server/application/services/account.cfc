@@ -142,23 +142,23 @@ public any function register( data  ) {
 
 public any function confirmemail( token  ) {
 
-	var ret = structNew();
-	ret["result"]=false;
+	var ret = "failure";
 
 	var account = entityLoad('account', {validemail=token} , "true");
 			if ( !isNull(account) ) {
-
-				account.setIsValid(1);
-				entitySave(account);
-				ormFlush();
-				ret.result="true";
-
+				if ( account.getIsValid() eq 1 ) {
+					return "repeat";
+				} else {
+					account.setIsValid(1);
+					entitySave(account);
+					ormFlush();
+					return "success";
+					}
 				}
 
 	return ret;
 
 }
-
 public any function requestPasswordReset( data  ) {
 
 	var ret = structNew();
