@@ -5,6 +5,11 @@ component accessors = true {
 	property accountservice;
 	property sessionservice;
 
+	public void function unauthorised() {
+
+		framework.renderData('TEXT', 'no data' );
+	}
+
 	public void function getaccount() {
 
 		var ret = {};

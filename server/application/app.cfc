@@ -51,7 +51,7 @@ component extends="framework.one" {
 //	dump(var:authresult);abort;
     if ( !authresult.authorised ) {
 			if ( getSubsystem() eq 'api' ) {
-				renderData('TEXT' , 'unauthorised');
+				redirect(action = 'api:public.unauthorised');
 			}
 			else if ( authresult.response eq "needlogin") {
 				redirect(action = 'public.default');
