@@ -5,7 +5,7 @@ component accessors = true {
 	property accountservice;
 	property sessionservice;
 
-	public void function unauthorised() {
+	public void function nodata() {
 
 		framework.renderData('TEXT', 'no data' );
 	}
