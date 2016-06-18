@@ -4,112 +4,110 @@
   angular.module('public')
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/public');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
-        .state('root', {
-            abstract: true,
-            templateUrl: 'public/public.html',
+        .state('public', {
+            url:'/',
             resolve: {
                 currentAccount: ['common.accountService' , function( accountService) {
                     return accountService.getAccount()
                 }]
             },
-            controller: 'PageController',
-            controllerAs: 'page'
-        })
-        .state('public', {
-            parent: 'root',
-            url:'/public',
             views: {
-                'header': {
+                '': {
+                templateUrl: 'public/public.html',
+                controller: 'PageController',
+                controllerAs: 'page'
+                },
+                'header@public': {
                     template: '<fm-common-header />'
                 },
-                'content': {
+                'content@public': {
                     template: '<fm-landingpage />'
                 },
-                'auth': {
+                'auth@public': {
                     template: '<fm-login-form />'
                 },
-                'profile': {
+                'profile@public': {
                     template: '<fm-profile />'
                 }
             }
         })
         .state('public.login', {
-            url:'/login',
+            url:'login',
             views: {
-                'auth@root': {
+                'auth@public': {
                     template: '<fm-login-form />'
                 }
             }
         })
         .state('public.register', {
-            url:'/register',
+            url:'register',
             views: {
-                'auth@root': {
+                'auth@public': {
                     template: '<fm-register-form />'
                 }
             }
         })
         .state('public.registrationOk', {
-            url:'/registrationOk',
+            url:'registrationOk',
             views: {
-                'auth@root': {
+                'auth@public': {
                     templateUrl: 'public/templates/public.registrationOk.html'
                 }
             }
         })
         .state('public.requestpasswordreset', {
-            url:'/requestpasswordreset',
+            url:'requestpasswordreset',
             views: {
-                'auth@root': {
+                'auth@public': {
                     template: '<fm-request-password-reset-form />'
                 }
             }
         })
         .state('public.requestpasswordresetOk', {
-            url:'/requestpasswordresetOk',
+            url:'requestpasswordresetOk',
             views: {
-                'auth@root': {
+                'auth@public': {
                     templateUrl: 'public/templates/public.requestpasswordresetOk.html'
                 }
             }
         })
         .state('public.resetpassword', {
-            url:'/resetpassword/:token',
+            url:'resetpassword/:token',
             views: {
-                'auth@root': {
+                'auth@public': {
                     template: '<fm-reset-password-form />'
                 }
             }
         })
         .state('public.unauthorised', {
-            url:'/unauthorised',
+            url:'unauthorised',
             views: {
-                'content@root': {
+                'content@public': {
                     templateUrl: 'public/templates/public.unauthorised.html'
                 }
             }
         })
         .state('public.confirmemail', {
-            url:'/confirmemail/:token',
+            url:'confirmemail/:token',
             resolve: {
                 emailConfirmation: ['common.accountService', '$stateParams' , function( accountService , $stateParams) {
                     return accountService.confirmEmail( $stateParams )
                 }]
             },
             views: {
-                'auth@root': {
+                'auth@public': {
                     template: '<fm-login-form />',
                     controller: 'ConfirmEmailController'
                 }
             }
         })
         .state('public.404', {
-            url:'/404',
+            url:'404',
             views: {
-                'content@root': {
+                'content@public': {
                     templateUrl: 'public/templates/public.404.html'
                 }
             }
