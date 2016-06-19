@@ -13,11 +13,11 @@ angular
 
 			accountService.registerAccount( vm.registerData ).then(
 				function(registerResult){
-					if ( !registerResult.result ) {
+					if ( !registerResult.data.result ) {
 			            toaster.pop({
 							type: 'warning',
 			        		title: 'Registration Failed',
-			        		body: registerResult,
+			        		body: registerResult.data,
 							timeout: 0,
 							showCloseButton: true
 						});

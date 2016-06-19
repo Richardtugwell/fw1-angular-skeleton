@@ -12,8 +12,8 @@ angular
 		vm.submitLogin = function() {
 
 			accountService.loginAccount( vm.loginData ).then(
-				function(loginResult){
-					if (loginResult.result) {
+				function(result){
+					if (result.data.authenticated) {
 						accountService.setAccount( )
 						.then( function(data) {
 							$state.go('public' , {} , {reload : true });
@@ -23,7 +23,7 @@ angular
 			            toaster.pop({
 							type: 'warning',
 			        		title: 'Login Failed',
-			        		body: loginResult.message,
+			        		body: result.data.message,
 							timeout: 0,
 							showCloseButton: true
 						});

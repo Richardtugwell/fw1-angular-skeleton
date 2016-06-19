@@ -16,12 +16,22 @@ angular
 
 		vm.submitResetPassword = function() {
 			accountService.resetPassword( vm.formdata ).then(
-				function( data ){
-					$state.go('public.login');
-					messageCenterService.add(
-						'success',
-						'Password reset - you can now login with your new credentials'
-					);
+				function( response ){
+					if (response.data.result) {
+						$state.go('public.login');
+						messageCenterService.add(
+							'success',
+							'Password reset - you can now login with your new credentials',
+							{ status: messageCenterService.status.next }
+						)
+					}
+					else {
+						messageCenterService.remove('Password reset - you can now login with your new credentials');
+						messageCenterService.add(
+							'warning',
+							'Password reset failed - maybe the link had already been used or has expired'
+						);
+					}
 				},
 		        function(err){
 		           console.error(err);

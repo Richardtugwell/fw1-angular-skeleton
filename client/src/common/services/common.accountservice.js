@@ -5,12 +5,11 @@
 		.module('common')
 		.factory('common.accountService' , accountService )
 
-	accountService.$inject = ['Restangular']
+	accountService.$inject = [ '$http' ]
 
-    function accountService(restangular) {
+    function accountService( $http ) {
 
         var service    = {};
-        var publicAPI = restangular.all('/api/public');
         var accountPromise = null;
 
         service.loginAccount = loginAccount;
@@ -26,17 +25,19 @@
 
         function loginAccount( data ) {
 
-            return publicAPI.customPOST( data , 'authenticate');
-
+            return $http( {
+                method : "POST",
+                url : "api/public/authenticate" ,
+                data : data })
         }
 
         function getAccount( ) {
 
             if ( accountPromise == null ) {
             // Caches the account promise so we only need one xhr call
-                accountPromise = publicAPI.get( 'getaccount')
-                    .then(function (data) {
-                        return data;
+                accountPromise = $http.get( 'api/public/getaccount')
+                    .then(function (response) {
+                        return response.data;
                     });
             }
             return accountPromise;
@@ -50,25 +51,37 @@
 
         function registerAccount( registerdata ) {
 
-            return publicAPI.customPOST( registerdata , 'register');
+            return $http( {
+                method : "POST",
+                url : "api/public/register" ,
+                data : registerdata })
 
         }
 
         function confirmEmail( data ) {
 
-            return publicAPI.customPOST( data , 'confirmemail');
+            return $http( {
+                method : "POST",
+                url : "api/public/confirmemail" ,
+                data : data })
 
         }
 
         function requestPasswordReset( formdata ) {
 
-            return publicAPI.customPOST( formdata , 'requestpasswordreset');
+            return $http( {
+                method : "POST",
+                url : "api/public/requestpasswordreset" ,
+                data : formdata })
 
         }
 
         function resetPassword( formdata ) {
 
-            return publicAPI.customPOST( formdata , 'resetpassword');
+            return $http( {
+                method : "POST",
+                url : "api/public/resetpassword" ,
+                data : formdata })
 
         }
     }
