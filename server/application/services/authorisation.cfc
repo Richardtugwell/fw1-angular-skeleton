@@ -3,28 +3,31 @@ component  accessors="true" {
 	property sessionservice;
 
 	// we need the rules struct ordered, because it is searched for first match
-	variables.rules = createObject("java", "java.util.LinkedHashMap").init() ;
-	variables.rules['admin'] = 4;
-	variables.rules['user'] = 2;
-	variables.rules['public'] = 1;
+	variables.rules = createObject("java", "java.util.LinkedHashMap").init(
+		{
+			'admin' : 4,
+			'user' : 2,
+			'public' : 1
+		}
+	)
 
-	// if desired, we can use a roles structure to asign permissions (not implemnted)
-	variables.roles = structNew() ;
-	variables.roles["global"] = {
-		"name": "The Superaccount",
-		"permissions": 15
-	}
-	variables.roles["admin"] = {
-		"name": "Admin Account",
-		"permissions": 7
-	}
-	variables.roles["account"] = {
-		"name": "Standard Account",
-		"permissions": 3
-	}
-	variables.roles["anonymous"] = {
-		"name": "Public Account",
-		"permissions": 1
+	variables.roles = {
+		"global" : {
+			"name": "The Superaccount",
+			"permissions": 15
+		},
+		"admin" : {
+			"name": "Admin Account",
+			"permissions": 7
+		},
+		"account" : {
+			"name": "Standard Account",
+			"permissions": 3
+		},
+		"anonymous" : {
+			"name": "Public Account",
+			"permissions": 1
+		}
 	}
 
 	public struct function getRoles(){
