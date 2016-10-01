@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>lucee.heroku</groupId>
 	<artifactId>lucee.heroku</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.4</version>
 	<name>Lucee Heroku Application Template</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.lucee</groupId>
 			<artifactId>lucee</artifactId>
-			<version>4.5.3.001</version>
+			<version>4.5.3.012</version>
 		</dependency>
 
 		<dependency>
@@ -30,19 +30,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.38</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<version>2.2</version>
-		</dependency>
-
-		<dependency>
-		    <groupId>org.postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>9.4.1207</version>
+			<version>6.0.2</version>
 		</dependency>
 
 	</dependencies>
@@ -51,6 +39,27 @@
 		<repository>
 			<id>cfmlprojects</id>
 			<url>http://cfmlprojects.org/artifacts</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>oss-sonatype</id>
+			<name>oss-sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -83,7 +92,7 @@
 				<configuration>
 					<filesets>
 						<fileset>
-							<directory>application/webroot/WEB-INF</directory>
+							<directory>webroot/WEB-INF</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
@@ -109,7 +118,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>application/webroot/WEB-INF/lib</outputDirectory>
+							<outputDirectory>webroot/WEB-INF/lib</outputDirectory>
 						</configuration>
 					</execution>
 
@@ -133,7 +142,7 @@
 								<artifactItem>
 									<groupId>org.lucee.lib</groupId>
 									<artifactId>lucee-inst</artifactId>
-									<version>4.5.2.011</version>
+									<version>4.5.3.001</version>
 									<type>jar</type>
 									<overWrite>false</overWrite>
 									<outputDirectory>${project.build.directory}</outputDirectory>
@@ -154,7 +163,7 @@
 						<configuration>
 							<target>
 								<echo file="Procfile"
-									message="web: java $JAVA_OPTS -javaagent:target/lucee-inst.jar -jar target/winstone.jar --ajp13Port=-1 --httpPort=$PORT --directoryListings=false --simulateModUniqueId=true --webroot=application/webroot " />
+									message="web: java $JAVA_OPTS -javaagent:target/lucee-inst.jar -jar target/winstone.jar --ajp13Port=-1 --httpPort=$PORT --directoryListings=false --simulateModUniqueId=true --webroot=webroot " />
 							</target>
 						</configuration>
 						<goals>
