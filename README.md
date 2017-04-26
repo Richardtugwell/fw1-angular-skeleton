@@ -1,4 +1,5 @@
-##FW1 / Angular Skeleton
+FW1 / Angular Skeleton
+========================
 
 This is a protoype for building websites / webapps that integrate the FW/1 MVC framework with a modular AngularJS front end. It includes server side account/user management, authentication and an simple resource authorisation scheme.
 
